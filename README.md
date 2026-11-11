@@ -77,28 +77,9 @@ Le réseau repose sur une architecture hiérarchique organisée autour de trois 
 
 Cette organisation facilite l'administration, améliore la modularité et permet de faire évoluer l'infrastructure.
 
-### Vue conceptuelle de l'architecture
+### Vue de l'architecture
+<img width="816" height="603" alt="image" src="https://github.com/user-attachments/assets/1fcaffa6-ea17-41ef-b86d-cf853efdd512" />
 
-```text
-                  ENTREPRISE
-                      |
-               Couche Core
-                      |
-          +-----------+-----------+
-          |                       |
-     Distribution 1          Distribution 2
-          |                       |
-      +---+---+               +---+---+
-      |       |               |       |
-   Access 1 Access 2       Access 3 Access 4
-      |       |               |       |
-   VLAN 10 VLAN 20         VLAN 30 VLAN 40
-      |       |               |       |
-  Département A          Département C
-  Département B          Département D
-```
-
-*Schéma conceptuel illustratif : se référer à la topologie Packet Tracer pour l'architecture réellement implémentée.*
 
 ## 🧩 4. Technologies et fonctionnalités
 
