@@ -1,0 +1,198 @@
+
+en
+conf t
+
+hostname S3
+line console 0
+password cisco
+login
+exit
+
+enable secret ciscoenpa55
+no ip domain-lookup
+banner motd #No unauthorized access !!!#
+do wr
+
+
+
+int gig0/0
+ip add 192.168.2.1 255.255.255.0
+clock rate 64000
+exit
+int se0/0/0
+ip add 10.1.1.1 255.255.255.252
+clock rate 64000
+exit 
+int se0/0/1
+ip add 10.2.2.1 255.255.255.252
+clock rate 64000
+exit 
+do wr
+
+
+
+
+
+
+ip domain name cisco.net
+username admin password cisco
+crypto key generate rsa
+1024
+line vty 0 15
+login local
+transport input ssh
+ip ssh version 2
+
+do wr
+_______________________________________________________
+conf t
+int range fa0/1-2
+switchport mode trunk
+exit
+
+vlan 60
+name SERVERROOM
+exit
+int range fa0/3-24
+switchport mode access
+switchport access vlan 60
+exit
+
+vlan 99
+name BlackHole
+exit
+int range gig0/1-2
+switchport mode access
+switchport access vlan 99
+shutdown
+exit
+
+do wr
+_____________________________________________________________
+conf t
+int range Gig1/0/3-8
+switchport mode trunk
+exit
+
+vlan 10
+name SALES
+vlan 20
+name HR
+vlan 30
+name FINANCE
+vlan 40
+name ADMIN
+vlan 50
+name ICT
+vlan 60
+name SERVERROOM
+ex
+
+do wr
+__________________________________________________________________________
+Rendre les int des mlt comme étant des int de couche 3
+
+conf t
+int range gig1/0/1-2
+no switchport
+do wr
+___________________________________________________________________________
+Configuration de ospf sur les switch de la couche disribution
+
+conf t
+ip routing
+router ospf 10
+router-id 2.2.2.2
+network 172.16.1.0 0.0.0.127 area 0
+network 172.16.1.128 0.0.0.127 area 0
+network 172.16.2.0 0.0.0.127 area 0
+network 172.16.2.128 0.0.0.127 area 0
+network 172.16.3.0 0.0.0.127 area 0
+network 172.16.3.128 0.0.0.15 area 0
+network 172.16.3.152 0.0.0.3 area 0
+network 172.16.3.156 0.0.0.3 area 0
+do wr
+_________________________________________________________________________
+conf t
+router ospf 10
+router-id 4.4.4.4
+network 172.16.3.148 0.0.0.3 area 0
+network 172.16.3.156 0.0.0.3 area 0
+network 195.136.17.8 0.0.0.3 area 0
+network 195.136.17.12 0.0.0.3 area 0
+do wr
+_____________________________________________________________
+conf t
+router ospf 10
+router-id 5.5.5.5
+network 195.136.17.0 0.0.0.3 area 0
+network 195.136.17.8 0.0.0.3 area 0
+do wr
+______________________________________________________________
+routage inter-vlan
+
+conf t
+int vlan 10
+no sh
+ip add 172.16.1.1 255.255.255.128
+ip helper-address 172.16.3.130
+ex
+int vlan 20
+no sh
+ip add 172.16.1.129 255.255.255.128
+ip helper-address 172.16.3.130
+ex
+int vlan 30
+no sh
+ip add 172.16.2.1 255.255.255.128
+ip helper-address 172.16.3.130
+ex
+int vlan 40
+no sh
+ip add 172.16.2.129 255.255.255.128
+ip helper-address 172.16.3.130
+ex
+int vlan 50
+no sh
+ip add 172.16.3.1 255.255.255.128
+ip helper-address 172.16.3.130
+ex
+int vlan 60
+no sh
+ip add 172.16.3.129 255.255.255.240
+ip helper-address 172.16.3.130
+ex
+do wr
+_________________________________________________________________________
+configuration de PAT+ACLs
+
+conf t 
+ip nat inside source list 1 int se0/2/0 overload
+ip nat inside source list 1 int se0/2/1 overload
+access-list 1 permit 172.16.1.0 0.0.0.127
+access-list 1 permit 172.16.1.128 0.0.0.127
+access-list 1 permit 172.16.2.0 0.0.0.127
+access-list 1 permit 172.16.2.128 0.0.0.127
+access-list 1 permit 172.16.3.0 0.0.0.127
+access-list 1 permit 172.16.3.128 0.0.0.15
+int range gig0/0-1 
+ip nat inside
+ex
+int se0/2/0 
+ip nat outside
+ex
+int se0/2/1 
+ip nat outside
+ex
+do wr
+_____________________________________________________________________________
+configuration des route par défaut
+
+conf t 
+ip route 0.0.0.0 0.0.0.0 se0/2/0
+ip route 0.0.0.0 0.0.0.0 se0/2/1 150
+do wr
+
+
+
+
