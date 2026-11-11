@@ -216,17 +216,9 @@ Ce projet permet de mettre en pratique plusieurs compétences en réseaux et sys
 
 **Kossi BIHAHO**
 
-Étudiant en informatique, orienté Réseaux, Systèmes et Cloud Computing.
+Étudiant en Réseaux, Systèmes et Services Programmables.
 
 - GitHub : [@kossibihaho](https://github.com/kossibihaho)
 - LinkedIn : [Kossi BIHAHO](https://www.linkedin.com/in/kossi-bihaho-0624a6363/)
-
-## 📄 13. Licence
-
-Ce projet est réalisé dans un cadre académique.
-
-Toute réutilisation ou adaptation du contenu doit mentionner le dépôt original.
-
----
 
 ⭐ Si ce projet vous intéresse, n'hésitez pas à consulter le dépôt et à suivre son évolution.
