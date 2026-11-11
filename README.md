@@ -1,13 +1,26 @@
-# Projet_CISCO
-Conception et simulation du réseau sécurisé d’une entreprise multi-départements basé sur une architecture hiérarchique avec redondance.
-
-
 # 🌐 Conception et simulation d'un réseau d'entreprise sécurisé avec Cisco Packet Tracer
 
 ![Cisco](https://img.shields.io/badge/Cisco-Networking-049fd9?logo=cisco&logoColor=white)
 ![Packet Tracer](https://img.shields.io/badge/Simulation-Packet%20Tracer-blue)
 ![Networking](https://img.shields.io/badge/Domain-Network%20Engineering-orange)
 ![Status](https://img.shields.io/badge/Status-Academic%20Project-success)
+
+## 📑 Sommaire
+
+- [📌 Présentation du projet](#-présentation-du-projet)
+- [🏢 1. Contexte et problématique](#-1-contexte-et-problématique)
+- [🎯 2. Objectifs du projet](#-2-objectifs-du-projet)
+- [🏗️ 3. Architecture réseau](#️-3-architecture-réseau)
+- [🧩 4. Technologies et fonctionnalités](#-4-technologies-et-fonctionnalités)
+- [🔐 5. Segmentation et sécurité](#-5-segmentation-et-sécurité)
+- [🔄 6. Redondance et disponibilité](#-6-redondance-et-disponibilité)
+- [🧪 7. Tests et validation](#-7-tests-et-validation)
+- [🛠️ 8. Outils utilisés](#️-8-outils-utilisés)
+- [📂 9. Structure du dépôt](#-9-structure-du-dépôt)
+- [🚀 10. Installation et utilisation](#-10-installation-et-utilisation)
+- [📚 11. Compétences développées](#-11-compétences-développées)
+- [👨‍💻 12. Auteur](#-12-auteur)
+
 
 ## 📌 Présentation du projet
 
